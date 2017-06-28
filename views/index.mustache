@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="../public/styles.css">
+</head>
+
+<body>
+    <div class="main">
+        <h1>To Do List</h1>
+        <form method="POST" action="/index">
+            <div class='input-area'>
+                <input type="text" name="todo" placeholder="To Do: " />
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        <div class='todo-list'>
+            <ul>
+                {{#tasks}} {{^completed}}
+                <li class="list">
+                    {{description}}
+                    <div class="options">
+                        <form method="POST" action="/index/edit/{{id}}" class="edit">
+                            <input type="text" name="edit" placeholder="What to change: " />
+                            <button type="submit">Submit edit</button>
+                        </form>
+                        <form method="POST" action="/index/{{id}}">
+                            <button type="submit" class="mark-complete">Mark Complete</button>
+                        </form>
+                        <form method="POST" action="/index/delete/{{id}}">
+                            <button type="submit" class="delete">Delete Task</button>
+                        </form>
+                    </div>
+                </li>
+                {{/completed}} {{/tasks}}
+            </ul>
+        </div>
+        <div class='completed-tasks'>
+            <h2>Completed Tasks</h2>
+            <form method="POST" action="/index/delete/all">
+                <button type="submit" class="delete">Delete All Completed Tasks</button>
+            </form>
+            <ul>
+                {{#tasks}} {{#completed}}
+                <li class="list">{{description}}
+                    <form method="POST" action="/index/delete/{{id}}">
+                        <button type="submit" class="delete">Delete Task</button>
+                    </form>
+                </li>
+                {{/completed}} {{/tasks}}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

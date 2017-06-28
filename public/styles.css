@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.input-area {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input-area input {
+  width: 40%;
+  height: 40px;
+  margin-left: 25%;
+  font-size: 20px;
+}
+
+.input-area button {
+  width: 100px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.todo-list li, .completed-tasks li {
+  font-size: 25px;
+}
+
+.completed-tasks li {
+  font-size: 25px;
+}
+
+.todo-list button, .completed-tasks button {
+  height: 22px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.completed-tasks li {
+  margin-top: 15px;
+}
+
+.completed-tasks ul {
+  padding: 0;
+}
+
+.list {
+  display: flex;
+  align-content: center;
+}
+
+.edit input[type=text] {
+  height: 25px;
+  font-size: 14px;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 20px;
+}
