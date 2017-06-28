@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 
 router.get("/index", function (request, response) {
-  var result = models.Item.all({order:[["createdAt", "DESC"]]}).then(result => {
+  var result = models.Item.all({ order: [["createdAt", "DESC"]] }).then(result => {
     response.render('index', { tasks: result });
   });
 });
@@ -24,13 +24,19 @@ router.post("/index", function (request, response) {
 });
 
 router.post('/index/edit/:id', (request, response) => {
-  models.Item.update({
-    description: request.body.edit
-  }, {
-      where: {
-        id: request.params.id
-      }
-    }).then(result => response.redirect('/index'));
+  var edit = request.body.edit;
+
+  if (!edit) {
+    response.redirect('/index');
+  } else {
+    models.Item.update({
+      description: edit
+    }, {
+        where: {
+          id: request.params.id
+        }
+      }).then(result => response.redirect('/index'));
+  }
 });
 
 router.post('/index/:id', (request, response) => {
